@@ -1,0 +1,6 @@
+CREATE INDEX IF NOT EXISTS idx_person_name ON person USING btree(UPPER(name));
+
+SET ENABLE_SEQSCAN = OFF;
+
+EXPLAIN ANALYZE
+SELECT * FROM person WHERE UPPER(name) = 'DMITRIY';
